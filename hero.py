@@ -27,19 +27,21 @@ class Hero:
         # and add (+=) damage of each attack to our total
         for ability in self.abilities:
             total_damage += ability.attack()
-            # Return the updated total damage
-            return total_damage
+         # Return the updated total damage
+        return total_damage
     
     def add_armor(self, armor):
         # Using the append method to add armor objects to our armors list
         self.armors.append(armor)
     
     def defend(self):
+        total_block = 0
         for armors in self.armors:
             total_block += armors.block()
-            return total_block
+        return total_block
 
     def take_damage(self, damage):
+        pass
     #Updates self.current_health to reflect the damage minus the defense.
     # TODO: Create a method that updates self.current_health to the current
     # minus the the amount returned from calling self.defend(damage).
