@@ -41,11 +41,17 @@ class Hero:
         return total_block
 
     def take_damage(self, damage):
-        pass
-    #Updates self.current_health to reflect the damage minus the defense.
-    # TODO: Create a method that updates self.current_health to the current
-    # minus the the amount returned from calling self.defend(damage).
+        #Updates self.current_health to reflect the damage minus the defense.
+        damage_after_armors = damage - self.defend()
+        print(f'Damage taken: {damage_after_armors}')
+        self.current_health -= damage_after_armors
         
+    def is_alive(self):
+    # Returns true or false statement depending on whether the hero's health falls below zero or not
+        if hero.current_health <= 0:
+            return False
+        else:
+            return True
 
 if __name__ == "__main__":
      # If you run this file from the terminal
@@ -57,7 +63,11 @@ if __name__ == "__main__":
     hero = Hero("Grace Hopper", 200)
     hero.add_ability(ability)
     hero.add_ability(ability_2)
+    hero.add_armor(Armor("defense", 100))
     print(hero.attack())
     print(hero.defend())
+    hero.take_damage(50)
+    print(hero.current_health)
+    print(hero.is_alive())
     #print(hero.abilities)
     #hero_1.fight(hero_2)
