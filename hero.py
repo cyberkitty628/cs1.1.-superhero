@@ -11,11 +11,23 @@ class Hero:
         self.abilities = list()
         self.armors = list()
 
-    def fight(self, opponent):
-        # Create variable to store both names into a list, pass it into the choice() method to pick random name
-        heroes_list = [self.name, opponent.name]
-        print(choice(heroes_list) + " wins!")
+    # Old fight method 
+    # def fight(self, opponent):
+    #     # Create variable to store both names into a list, pass it into the choice() method to pick random name
+    #     heroes_list = [self.name, opponent.name]
+    #     print(choice(heroes_list) + " wins!")
 
+    # New fight method
+    def fight(self, opponent):
+        # TODO: Fight each hero until a victor emerges.
+        # Phases to implement:
+        # 0) check if at least one hero has abilities. If no hero has abilities, print "Draw"
+        # 1) else, start the fighting loop until a hero has won
+        # 2) the hero (self) and their opponent must attack each other and each must take damage from the other's attack
+        # 3) After each attack, check if either the hero (self) or the opponent is alive
+        # 4) if one of them has died, print "HeroName won!" replacing HeroName with the name of the hero, and end the fight loop
+        pass
+        
     def add_ability(self, ability):
         # Using the append method to add ability objects to our abilities list.
         self.abilities.append(ability)
