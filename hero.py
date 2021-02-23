@@ -19,6 +19,22 @@ class Hero:
 
     # New fight method
     def fight(self, opponent):
+        if len(self.abilities) == 0 and len(opponent.abilities) == 0:
+            print("Draw")
+        else:
+            while self.is_alive() and opponent.is_alive():
+                hero_total_damage = self.attack()
+                opponent.take_damage(hero_total_damage)
+
+                opponent_total_damage = opponent.attack()
+                self.take_damage(opponent_total_damage)
+
+                if not self.is_alive() or not opponent.is_alive():
+                    print("Both died :(")
+                elif not self.is_alive():
+                    print(f"{opponent.name} won!")
+                elif not opponent.is_alive():
+                    print(f"{self.name} won!")
         # TODO: Fight each hero until a victor emerges.
         # Phases to implement:
         # 0) check if at least one hero has abilities. If no hero has abilities, print "Draw"
@@ -60,7 +76,7 @@ class Hero:
         
     def is_alive(self):
     # Returns true or false statement depending on whether the hero's health falls below zero or not
-        if hero.current_health <= 0:
+        if self.current_health <= 0:
             return False
         else:
             return True
@@ -68,18 +84,14 @@ class Hero:
 if __name__ == "__main__":
      # If you run this file from the terminal
      # this block is executed.
-    #hero_1 = Hero("Catwoman")
-    #hero_2 = Hero("Batman")
-    ability = Ability("Great Debugging", 50)
-    ability_2 = Ability("Great Attack", 100)
-    hero = Hero("Grace Hopper", 200)
-    hero.add_ability(ability)
-    hero.add_ability(ability_2)
-    hero.add_armor(Armor("defense", 100))
-    print(hero.attack())
-    print(hero.defend())
-    hero.take_damage(50)
-    print(hero.current_health)
-    print(hero.is_alive())
-    #print(hero.abilities)
-    #hero_1.fight(hero_2)
+    hero1 = Hero("Wonder Woman")
+    hero2 = Hero("Dumbledore")
+    ability1 = Ability("Super Speed", 300)
+    ability2 = Ability("Super Eyes", 130)
+    ability3 = Ability("Wizard Wand", 80)
+    ability4 = Ability("Wizard Beard", 20)
+    hero1.add_ability(ability1)
+    hero1.add_ability(ability2)
+    hero2.add_ability(ability3)
+    hero2.add_ability(ability4)
+    hero1.fight(hero2)
